@@ -1,5 +1,5 @@
 import { AuthLayout } from "../../layouts/AuthLayout";
-import { Form, FormInput } from "../../styles/global";
+import { Form, FormButton, FormInput } from "../../styles/global";
 
 export function Login() {
     return (
@@ -7,7 +7,7 @@ export function Login() {
             <Form>
                 <FormInput type="email" placeholder="E-mail" />
                 <FormInput type="password" placeholder="Senha" />
-                <FormInput type="submit">Entrar</FormInput>
+                <FormButton type="submit">Entrar</FormButton>
             </Form>
         </AuthLayout>
     );

@@ -7,11 +7,11 @@ export const GlobalStyle = createGlobalStyle`
     }
     :focus{
         outline: 0;
-        box-shadow: 0 0 0 2px ${(props) => props.theme["yellow-500"]};
+        box-shadow: 0 0 0 2px ${props => props.theme["yellow-500"]};
     }
     body{
-        background-color: ${(props) => props.theme["gray-600"]};
-        color: ${(props) => props.theme["gray-300"]};
+        background-color: ${props => props.theme["gray-600"]};
+        color: ${props => props.theme["gray-300"]};
         -webkit-font-smoothing: antialiased;
     }
     body, input, button{
@@ -34,17 +34,17 @@ export const FormInput = styled.input`
     }
 `;
 export const FormButton = styled.button`
-    background: ${props => props.theme.["yellow-300"]};
+    background: ${props => props.theme["yellow-300"]};
     padding: 1rem 0;
     margin-top: 1rem;
     border-radius: 6px;
-    border: 1px solid ${props => props.theme.["yellow-300"]};
+    border: 1px solid ${props => props.theme["yellow-300"]};
     font-weight: bold;
-    transition: background 1s ease;
+    transition: background .5s ease;
     &:hover{
         cursor: pointer;
-        background: 1px solid ${props => props.theme.["yellow-500"]}
-        border: 1px solid 1px solid ${props => props.theme.["yellow-500"]}
-    }
+        background: ${props => props.theme["yellow-500"]};
+        border: 1px solid 1px solid ${props => props.theme["yellow-500"]};
+    };
 
 `;
