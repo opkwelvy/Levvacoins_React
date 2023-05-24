@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.9",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-popover": "1.0.5",
+    "@radix-ui/react-radio-group": "^1.1.2",
     "phosphor": "^0.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

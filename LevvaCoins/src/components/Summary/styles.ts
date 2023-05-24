@@ -1,21 +1,23 @@
 import styled, { css } from "styled-components";
 
 export const SummaryContainer = styled.section`
-    display: grid;
-    grid-template-columns:1fr 1fr 1fr;
+    display: flex;
     width: 100%;
     max-width: 1120px;
     gap: 1rem;
-    grid-column: 2/3;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    margin-top: -5rem;
+    @media only screen and (max-width: 1440px){
+        max-width: 1024px;
+    }
+    margin: -5rem auto 4rem ;
+
 `
 interface SummaryCardProps {
     variant?: "balance";
 };
 
 export const SummaryCard = styled.div<SummaryCardProps>`
+    flex: 1;
+    height: 140px;
     background: ${props => props.theme["gray-500"]};
     border-radius: 6px;
     padding: 2rem;
@@ -29,6 +31,9 @@ export const SummaryCard = styled.div<SummaryCardProps>`
         display: block;
         margin-top: 1rem;
         font-size: 2rem;
+        @media only screen (min-width: 1440px){
+            font-size: 1.7rem;
+        }
     }
     ${(props) => props.variant === "balance" && css`
         background:linear-gradient(to bottom, ${props.theme["gray-500"]}, ${props.theme["gray-700"]});
