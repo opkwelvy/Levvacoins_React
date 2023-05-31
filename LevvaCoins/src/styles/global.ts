@@ -23,17 +23,22 @@ export const GlobalStyle = createGlobalStyle`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     padding-top: 1rem;
+`;
+export const FormError = styled.span`
+    color: ${(props) => props.theme["red-500"]};
+    margin: 0.5rem 0 1rem;
 `;
 export const FormInput = styled.input`
     background: ${props => props.theme.black};
     color: ${props => props.theme.white};
     border: 0;
-    padding: 1rem 0;
-    padding-inline-start: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
     border-radius: 6px;
-    width:100%;
+    width:97%;
     &+&{
         margin-top: 1rem;
     }
