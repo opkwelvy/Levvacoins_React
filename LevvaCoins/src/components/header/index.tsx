@@ -1,14 +1,20 @@
 import { ReactNode } from "react";
-import { HeaderContainer, HeaderContent, NewCategoryButton, NewTransactionButton, UserAvatar } from "./styles";
+import { HeaderContainer, HeaderContent, NewCategoryButton, NewTransactionButton, SingOutButton, UserAvatar } from "./styles";
 import levvaCoinsLogo from "../../assets/Logo.svg";
 import { Modal } from "../Modal";
 import { Form, FormButton, FormInput, TransacitionTypeButton, TransactionTypeContainer } from "../../styles/global";
 import { ArrowCircleDown, ArrowCircleUp } from "@phosphor-icons/react";
+import { router } from "../../Router";
+
 export function Header() {
     const newCategoryButton: ReactNode = (<NewCategoryButton>Nova categoria</NewCategoryButton>);
     const newTransactionButton: ReactNode = (<NewTransactionButton>Nova transação</NewTransactionButton>);
     const userAvatar: ReactNode = (<UserAvatar src="https://github.com/jemluz.png" alt="Jemima" />);
 
+    function handleSingOut() {
+        window.localStorage.removeItem("user");
+        router.navigate("/login");
+    }
     return (
         <HeaderContainer>
             <HeaderContent>
@@ -48,6 +54,9 @@ export function Header() {
                         <FormInput type="name" value="Jemima Luz" />
                         <FormInput type="email" placeholder="jemima.luz@levva.io" disabled />
                         <FormButton type="submit">Atualizar</FormButton>
+                        <SingOutButton type="button" onClick={handleSingOut}>
+                            Sair
+                        </SingOutButton>
 
                     </Form>
                 </Modal>

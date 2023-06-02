@@ -1,3 +1,4 @@
+import { router } from "../../Router";
 import { LoginParams, LoginValues } from "../../domain/login";
 import { RequestError } from "../../domain/request";
 import { LoginService } from "../../services/LoginService/LoginService";
@@ -7,14 +8,13 @@ import { loadLogin, loadLoginDone, loadLoginFail } from "../../stores/LoginStore
 const execute = async ({ email, password }: LoginParams): Promise<void> => {
     loadLogin();
     const errorCallback = ({ hasError, message }: RequestError) => {
-        console.log({ message })
         loadLoginFail({ hasError, message });
     };
     return LoginService.authenticateUser({ email, password })
         .then((user: LoginValues) => {
             window.localStorage.setItem("user", JSON.stringify(user));
-            console.log(JSON.stringify(user));
             loadLoginDone();
+            router.navigate("/home");
         }).catch(errorCallback);
 }
 const LoginUseCase = {
