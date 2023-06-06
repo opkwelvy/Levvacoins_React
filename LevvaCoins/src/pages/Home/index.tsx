@@ -9,6 +9,10 @@ import { HomeWrapper, PriceHighLight, TransactionTabEmpty, TransactionsContainer
 
 export function Home() {
     const { isLoading, transactions } = useStore(TransactionStore);
+    const money = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
     useEffect(() => {
         GetTransactionsUseCase.execute();
     }, []);
@@ -29,9 +33,9 @@ export function Home() {
                         {transactions.length > 0 && transactions.map((transaction) => (
                             <tr>
                                 <td width="50%">{transaction.description}</td>
-                                <td><PriceHighLight variant={transaction.type === 0 ? "income" : "outcome"}>{transaction.amount}</PriceHighLight></td>
+                                <td><PriceHighLight variant={transaction.type === 0 ? "income" : "outcome"}>{money.format(transaction.amount)}</PriceHighLight></td>
                                 <td>{transaction.category.description}</td>
-                                <td>{transaction.createAt}</td>
+                                <td>{transaction.createdAt}</td>
                             </tr>
                         ))}
                     </tbody>

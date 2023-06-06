@@ -12,5 +12,5 @@ export interface TransactionValues {
     amount: number;
     type: number;
     category: CategoryValues;
-    createAt: string;
+    createdAt: string;
 }

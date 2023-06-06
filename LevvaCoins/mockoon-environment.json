@@ -509,7 +509,7 @@
       "responses": [
         {
           "uuid": "9b7fc837-82ac-45f1-b50e-d45d62afb774",
-          "body": "[\n  {{#repeat 5 10}}\n  { \n    \"description\":\"{{faker 'commerce.productName'}}\",\n    \"amount\":{{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{oneOf (array 0 1)}},\n    \"category\":{\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n  {{/repeat}}\n]",
+          "body": "[{{#repeat 5 10}}\n{\n  \"description\": \"{{faker 'commerce.productName'}}\",\n  \"amount\": {{toFixed (float 10 100) 2}},\n  \"type\": {{oneOf (array 0 1)}},\n  \"category\": {\n    \"id\" : \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.department'}}\"\n  },\n  \"createdAt\": \"{{now 'dd/MM/YYY'}}\"\n}\n{{/repeat}}]",
           "latency": 0,
           "statusCode": 200,
           "label": "List all created",
