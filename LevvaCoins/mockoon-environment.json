@@ -29,7 +29,7 @@
     {
       "uuid": "3a794918-d041-4b84-b248-6640038f8b07",
       "name": "Categories",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "route",
@@ -249,7 +249,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "Bearer eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOiI2ZmI2Y2FlZC1kZmVhLTRhYWUtYjZkZS04NTBlNTA3ODk2NjIiLCJlbWFpbCI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.xV01sZ6qRrYbewTQZ6POwvc6m1dLbz8qMzG4o-QeVG4",
               "invert": false,
               "operator": "equals"
             }
@@ -334,7 +334,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOiI2ZmI2Y2FlZC1kZmVhLTRhYWUtYjZkZS04NTBlNTA3ODk2NjIiLCJlbWFpbCI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.xV01sZ6qRrYbewTQZ6POwvc6m1dLbz8qMzG4o-QeVG4",
               "invert": true,
               "operator": "equals"
             }
@@ -394,7 +394,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOiI2ZmI2Y2FlZC1kZmVhLTRhYWUtYjZkZS04NTBlNTA3ODk2NjIiLCJlbWFpbCI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.xV01sZ6qRrYbewTQZ6POwvc6m1dLbz8qMzG4o-QeVG4",
               "invert": true,
               "operator": "equals"
             }
@@ -486,7 +486,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOiI2ZmI2Y2FlZC1kZmVhLTRhYWUtYjZkZS04NTBlNTA3ODk2NjIiLCJlbWFpbCI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.xV01sZ6qRrYbewTQZ6POwvc6m1dLbz8qMzG4o-QeVG4",
               "invert": true,
               "operator": "equals"
             }
@@ -509,7 +509,7 @@
       "responses": [
         {
           "uuid": "9b7fc837-82ac-45f1-b50e-d45d62afb774",
-          "body": "[\n  {{#repeat 5 10}}\n  { \n    \"description\":\"{{faker 'commerce.productName'}}\",\n    \"amount\":{{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{oneOf (array 0 1)}},\n    \"category\":{\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department}}\"\n    }\n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {{#repeat 5 10}}\n  { \n    \"description\":\"{{faker 'commerce.productName'}}\",\n    \"amount\":{{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{oneOf (array 0 1)}},\n    \"category\":{\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "List all created",
@@ -546,7 +546,7 @@
             {
               "target": "header",
               "modifier": "authorization",
-              "value": "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqaG9uLmRvZUBsZXZ2YS5pbyIsImlhdCI6MTUxNjIzOTAyMn0.XMM0kU6ynA91d-DF43ws4nRj5svI2OEzOOrkQ5LjMl8",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWQiOiI2ZmI2Y2FlZC1kZmVhLTRhYWUtYjZkZS04NTBlNTA3ODk2NjIiLCJlbWFpbCI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.xV01sZ6qRrYbewTQZ6POwvc6m1dLbz8qMzG4o-QeVG4",
               "invert": true,
               "operator": "equals"
             }

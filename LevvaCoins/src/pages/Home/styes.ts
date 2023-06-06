@@ -48,3 +48,11 @@ export const PriceHighLight = styled.span<PriceHighLightProps>`
             ? props.theme["green-500"]
             : props.theme["red-500"]}
 `;
+export const TransactionTabEmpty = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    font-size: 2rem;
+`;
