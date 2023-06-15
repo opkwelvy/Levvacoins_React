@@ -10,12 +10,12 @@ export function Summary() {
         currency: "BRL"
     });
     const summary = transactions.reduce((acc, transactions) => {
-        if (transactions.type == 0) {
-            acc.deposits += transactions.amount;
-            acc.total += transactions.amount;
+        if (transactions.tipo == 0) {
+            acc.deposits += transactions.valor;
+            acc.total += transactions.valor;
         } else {
-            acc.withdraws += transactions.amount;
-            acc.total - + transactions.amount;
+            acc.withdraws += transactions.valor;
+            acc.total -= transactions.valor;
         }
         return acc
     },

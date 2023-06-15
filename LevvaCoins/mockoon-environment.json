@@ -53,6 +53,10 @@
         {
           "type": "route",
           "uuid": "b1041207-eeb6-425e-a109-4a56036cbe9f"
+        },
+        {
+          "type": "route",
+          "uuid": "d5a48f9a-44b8-4d77-8c96-14c354f5d1d6"
         }
       ]
     }
@@ -272,7 +276,7 @@
       "responses": [
         {
           "uuid": "f8b6bae6-5d9e-406a-a147-82c416306693",
-          "body": "{}",
+          "body": "{\n  \"id\": \"{{guid}}\",\n  \"description\": \"{{faker 'commerce.department'}}\"\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "Created category",
@@ -417,7 +421,7 @@
       "responses": [
         {
           "uuid": "f04b6026-8dd5-47ab-ab46-790a504bf16d",
-          "body": "{}",
+          "body": "\n{\n  \"description\": \"{{faker 'commerce.productName'}}\",\n  \"amount\": {{toFixed (float 10 100) 2}},\n  \"type\": {{oneOf (array 0 1)}},\n  \"category\": {\n    \"id\" : \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.department'}}\"\n  },\n  \"createdAt\": \"{{now 'dd/MM/YYY'}}\"\n}\n",
           "latency": 0,
           "statusCode": 201,
           "label": "Transaction created",
@@ -555,6 +559,34 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "d5a48f9a-44b8-4d77-8c96-14c354f5d1d6",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "transaction/:id",
+      "responses": [
+        {
+          "uuid": "c959c745-c93c-4607-8119-48203555b59d",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
         }
       ],
       "enabled": true,

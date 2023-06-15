@@ -1,7 +1,7 @@
 export interface NewCategoryParams {
-    description: string;
+    descricao: string;
 }
 export interface CategoryValues {
     id: string;
-    description: string;
+    descricao: string;
 }

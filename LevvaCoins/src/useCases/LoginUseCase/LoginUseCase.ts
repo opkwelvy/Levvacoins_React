@@ -5,12 +5,12 @@ import { LoginService } from "../../services/LoginService/LoginService";
 import { loadLogin, loadLoginDone, loadLoginFail } from "../../stores/LoginStore/LoginEvents";
 
 
-const execute = async ({ email, password }: LoginParams): Promise<void> => {
+const execute = async ({ email, senha }: LoginParams): Promise<void> => {
     loadLogin();
     const errorCallback = ({ hasError, message }: RequestError) => {
         loadLoginFail({ hasError, message });
     };
-    return LoginService.authenticateUser({ email, password })
+    return LoginService.authenticateUser({ email, senha })
         .then((user: LoginValues) => {
             window.localStorage.setItem("user", JSON.stringify(user));
             loadLoginDone();

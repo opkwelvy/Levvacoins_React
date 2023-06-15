@@ -64,7 +64,8 @@ export const UserAvatar = styled.img<UserAvatarProps>`
 
     border-radius:50%;
     border: 2px solid transparent;
-    box-shadow; 0px 0px 10px 10px #00000010;
+    box-shadow: 0px 0px 10px 10px #00000010;
+    align-self: center;
     
     transition: all 0.3s;
     &:hover{
@@ -86,7 +87,7 @@ export const UserAvatar = styled.img<UserAvatarProps>`
         }`
     };
 `;
-export const SingOutButton = styled.button`
+export const SignOutButton = styled.button`
     background: ${(props) => props.theme["gray-600"]};
     color: ${(props) => props.theme.white};
     width: 100%;

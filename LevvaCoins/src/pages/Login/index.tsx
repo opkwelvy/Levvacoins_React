@@ -9,9 +9,9 @@ import LoginStore from "../../stores/LoginStore/LoginStore";
 
 interface FormProps {
     email: string;
-    password: string;
+    senha: string;
 }
-const formSchema = yup.object({ email: yup.string().email("Digite um email válido").required("O e-mail é obrigatório"), password: yup.string().required("A senha é obrigatório") }).required();
+const formSchema = yup.object({ email: yup.string().email("Digite um email válido").required("O e-mail é obrigatório"), senha: yup.string().required("A senha é obrigatório") }).required();
 export function Login() {
     const { isLoading, hasError, errorMessage } = useStore(LoginStore)
     const {
@@ -22,8 +22,8 @@ export function Login() {
         resolver: yupResolver(formSchema),
     });
 
-    async function handleLogin({ email, password }: FormProps) {
-        LoginUseCase.execute({ email, password });
+    async function handleLogin({ email, senha }: FormProps) {
+        LoginUseCase.execute({ email, senha });
     }
 
     return (
@@ -31,8 +31,8 @@ export function Login() {
             <Form onSubmit={handleSubmit(handleLogin)}>
                 <FormInput {...register("email")} placeholder="E-mail" />
                 {errors.email && <FormError>{errors.email.message}</FormError>}
-                <FormInput {...register("password")} type="password" placeholder="Senha" />
-                {errors.password && <FormError>{errors.password.message}</FormError>}
+                <FormInput {...register("senha")} type="password" placeholder="Senha" />
+                {errors.senha && <FormError>{errors.senha.message}</FormError>}
                 {hasError && <FormError>{errorMessage}</FormError>}
                 <FormLink to="/new-account">Não tem conta? Crie Agora!</FormLink>
                 <FormButton type="submit">

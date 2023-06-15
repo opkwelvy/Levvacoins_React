@@ -1,18 +1,18 @@
 import { CategoryService } from "../../services/CategoryService/CategoryService";
 import { loadCategory, loadCreateCategoryDone, loadCategoryFail } from "../../stores/CategoryStore/CategoryEvents";
-import { NewCategoryParams } from "../../domains/category";
 import { RequestError } from "../../domains/request";
-const execute = async ({ description }: NewCategoryParams): Promise<void> => {
+import { NewCategoryParams } from "../../domains/category";
+const execute = async ({ descricao }: NewCategoryParams): Promise<void> => {
     const errorCallback = ({ hasError, message }: RequestError) => {
         loadCategoryFail({ hasError, message });
         throw new Error();
     };
     loadCategory();
     return CategoryService.createCategory({
-        description,
+        descricao,
     })
-        .then(() => {
-            loadCreateCategoryDone();
+        .then((category) => {
+            loadCreateCategoryDone( category );
         })
         .catch(errorCallback);
 };

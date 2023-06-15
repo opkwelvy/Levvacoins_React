@@ -12,17 +12,17 @@ import getCategoriesUseCase from "../../services/GetCategoriesUseCase/GetCategor
 import NewTransactionUseCase from "../../useCases/NewTransactionUseCase/NewTransactionUseCase";
 import { ArrowCircleDown, ArrowCircleUp } from "@phosphor-icons/react";
 interface FormProps {
-    description: string;
-    amount: number;
-    type: string;
-    categoryId: string;
+    descricao: string;
+    valor: number;
+    tipo: string;
+    categoriaId: string;
 }
 const formSchema = yup
     .object({
-        description: yup.string().required("O nome da transação é obrigatório"),
-        amount: yup.number().required("O valor da transação é obrigatório."),
-        type: yup.string().oneOf(["income", "outcome"]).required("O valor da transação é obrigatório"),
-        categoryId: yup.string().required("A categoria da transação é obrigatória"),
+        descricao: yup.string().required("O nome da transação é obrigatório"),
+        valor: yup.number().required("O valor da transação é obrigatório."),
+        tipo: yup.string().oneOf(["income", "outcome"]).required("O tipo da transação é obrigatório"),
+        categoriaId: yup.string().required("A categoria da transação é obrigatória"),
     }).required();
 export function TransactionModal() {
     const closeModalRef = useRef<HTMLElement>(null);
@@ -41,41 +41,40 @@ export function TransactionModal() {
     useEffect(() => {
         getCategoriesUseCase.execute();
     }, []);
-    async function handleCreateCategory({
-        description,
-        amount,
-        type,
-        categoryId,
+    async function handleCreateTransaction({
+        descricao,
+        valor,
+        tipo,
+        categoriaId,
     }: FormProps) {
-        console.log({ description, amount, type, categoryId });
         NewTransactionUseCase.execute({
-            description,
-            amount,
-            type: type === "income" ? 0 : 1,
-            categoryId,
+            descricao,
+            valor,
+            tipo: tipo === "income" ? 0 : 1,
+            categoriaId,
         })
             .then(() => closeModalRef.current?.click())
             .finally(() => reset());
     }
     return (
         <Modal title="Nova Transação" closeModalRef={closeModalRef} trigger={<NewTransactionButton>Nova transação</NewTransactionButton>}>
-            <Form onSubmit={handleSubmit(handleCreateCategory)}>
-                <FormInput {...register("description")} placeholder="Descrição" />
-                {errors.description && (
-                    <FormError>{errors.description.message}</FormError>
+            <Form onSubmit={handleSubmit(handleCreateTransaction)}>
+                <FormInput {...register("descricao")} placeholder="Descrição" />
+                {errors.descricao && (
+                    <FormError>{errors.descricao.message}</FormError>
                 )}
-                <FormInput {...register("amount")} type="number" placeholder="Preço" step="0.1" min="0" max="9999999" />
-                {errors.amount && <FormError>{errors.amount.message}</FormError>}
-                <FormSelect {...register("categoryId")}>
-                    <option value="" selected disabled hidden>
+                <FormInput {...register("valor")} type="number" placeholder="Preço" step="0.1" min="0" max="9999999" />
+                {errors.valor && <FormError>{errors.valor.message}</FormError>}
+                <FormSelect defaultValue=""   {...register("categoriaId")}>
+                    <option value="" disabled hidden>
                         Categoria
                     </option>
-                    {categories.map((category) => (
-                        <option value={category.id}>{category.description}</option>
+                    {categories.map((categoria) => (
+                        <option key={categoria.id} value={categoria.id}>{categoria.descricao}</option>
                     ))}
                 </FormSelect>
-                {errors.categoryId && (<FormError>{errors.categoryId.message}</FormError>)}
-                <TransactionTypeContainer {...register("type")} onChange={(event) => setValue("type", event.target.value)}>
+                {errors.categoriaId && (<FormError>{errors.categoriaId.message}</FormError>)}
+                <TransactionTypeContainer {...register("tipo")} onChange={(event) => setValue("tipo", event.target.value)}>
                     <TransacitionTypeButton variant="income" value="income">
                         <ArrowCircleUp size={24} />
                         Entrada
@@ -85,7 +84,7 @@ export function TransactionModal() {
                         Saída
                     </TransacitionTypeButton>
                 </TransactionTypeContainer>
-                {errors.type && <FormError>{errors.type.message}</FormError>}
+                {errors.tipo && <FormError>{errors.tipo.message}</FormError>}
                 {hasError && <FormError>{errorMessage}</FormError>}
                 <FormButton type="submit">
                     {isLoading ? "Carregando..." : "Cadastrar"}

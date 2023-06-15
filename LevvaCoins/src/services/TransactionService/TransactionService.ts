@@ -3,18 +3,18 @@ import Api from "../../clients/api/Api";
 import { RequestError } from "../../domains/request";
 import { NewTransactionParams, TransactionValues } from "../../domains/transaction";
 const createTransaction = async ({
-    description,
-    amount,
-    type,
-    categoryId,
-}: NewTransactionParams): Promise<void> => {
+    descricao,
+    valor,
+    tipo,
+    categoriaId,
+}: NewTransactionParams): Promise<TransactionValues> => {
     return Api.post({
-        url: "/transaction",
+        url: "/Transacao/Create",
         body: {
-            description,
-            amount,
-            type,
-            categoryId,
+            descricao,
+            valor,
+            tipo,
+            categoriaId,
         },
     })
         .then((response) => {
@@ -26,7 +26,7 @@ const createTransaction = async ({
 };
 const getTransactions = async (): Promise<TransactionValues[]> => {
     return Api.get({
-        url: "/transaction",
+        url: "/Transacao/list",
     })
         .then((response) => {
             return response.data;

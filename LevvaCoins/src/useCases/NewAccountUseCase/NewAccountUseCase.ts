@@ -4,10 +4,10 @@ import { router } from "../../Router";
 import { NewAccountParams } from "../../domains/newAccount";
 import { RequestError } from "../../domains/request";
 const execute = async ({
-    name,
+    nome,
     email,
-    password,
-    confirmpassword,
+    senha,
+    confirmSenha,
 }: NewAccountParams): Promise<void> => {
     loadNewAccount();
 
@@ -15,10 +15,10 @@ const execute = async ({
         loadNewAccountFail({ hasError, message });
     };
     return NewAccountService.createUser({
-        name,
+        nome,
         email,
-        password,
-        confirmpassword,
+        senha,
+        confirmSenha,
     })
         .then(() => {
             loadNewAccountDone();

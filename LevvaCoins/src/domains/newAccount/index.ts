@@ -1,6 +1,6 @@
 export interface NewAccountParams {
-    name: string,
+    nome: string,
     email: string,
-    password: string,
-    confirmpassword: string,
+    senha: string,
+    confirmSenha: string,
 }

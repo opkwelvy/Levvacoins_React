@@ -7,20 +7,20 @@ import {
 import { NewTransactionParams } from "../../domains/transaction";
 import { RequestError } from "../../domains/request";
 const execute = async ({
-    description,
-    amount,
-    type,
-    categoryId,
+    descricao,
+    valor,
+    tipo,
+    categoriaId,
 }: NewTransactionParams): Promise<void> => {
     loadTransaction();
     return TransactionService.createTransaction({
-        description,
-        amount,
-        type,
-        categoryId,
+        descricao,
+        valor,
+        tipo,
+        categoriaId,
     })
-        .then(() => {
-            loadCreateTransactionDone()
+        .then((transaction) => {
+            loadCreateTransactionDone(transaction);
         })
         .catch(({ hasError, message }: RequestError) => {
             loadTransactionFail({ hasError, message });

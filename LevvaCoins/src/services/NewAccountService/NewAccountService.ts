@@ -3,18 +3,18 @@ import Api from "../../clients/api/Api";
 import { NewAccountParams } from "../../domains/newAccount";
 import { RequestError } from "../../domains/request";
 const createUser = async ({
-    name,
+    nome,
     email,
-    password,
-    confirmpassword,
+    senha,
+    confirmSenha,
 }: NewAccountParams): Promise<void> => {
     return Api.post({
-        url: "/user",
+        url: "/Usuario/Create",
         body: {
-            name,
+            nome,
             email,
-            password,
-            confirmpassword,
+            senha,
+            confirmSenha,
         },
     })
         .then((response) => {

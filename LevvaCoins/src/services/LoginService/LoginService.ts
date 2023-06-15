@@ -4,13 +4,13 @@ import { LoginParams, LoginValues } from "../../domains/login";
 import { RequestError } from "../../domains/request";
 const authenticateUser = async ({
     email,
-    password,
+    senha,
 }: LoginParams): Promise<LoginValues> => {
     return Api.post({
-        url: "/auth",
+        url: "/Usuario",
         body: {
             email,
-            password,
+            senha,
         },
     })
         .then((response) => {

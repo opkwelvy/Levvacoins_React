@@ -3,12 +3,12 @@ import Api from "../../clients/api/Api";
 import { CategoryValues, NewCategoryParams } from "../../domains/category";
 import { RequestError } from "../../domains/request";
 const createCategory = async ({
-    description,
-}: NewCategoryParams): Promise<void> => {
+    descricao,
+}: NewCategoryParams): Promise<CategoryValues> => {
     return Api.post({
-        url: "/category",
+        url: "/Categoria/Create",
         body: {
-            description,
+            descricao,
         },
     })
         .then((response) => {
@@ -20,7 +20,7 @@ const createCategory = async ({
 };
 const getCategories = async (): Promise<CategoryValues[]> => {
     return Api.get({
-        url: "/category",
+        url: "/Categoria/list",
     })
         .then((response) => {
             return response.data

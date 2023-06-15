@@ -10,11 +10,11 @@ import { Form, FormButton, FormError, FormInput } from "../../styles/global";
 import { useRef } from "react";
 
 interface FormProps {
-    description: string,
+    descricao: string,
 }
 const formSchema = yup
     .object({
-        description: yup.string().required("O nome da categoria é obrigatório"),
+        descricao: yup.string().required("O nome da categoria é obrigatório"),
     })
     .required();
 export function CategoryModal() {
@@ -28,16 +28,16 @@ export function CategoryModal() {
     } = useForm<FormProps>({
         resolver: yupResolver(formSchema)
     });
-    async function handleCreateCategory({ description }: FormProps) {
-        NewCategoryUseCase.execute({ description })
+    async function handleCreateCategory({ descricao }: FormProps) {
+        NewCategoryUseCase.execute({ descricao })
             .then(() => closeModalRef.current?.click())
             .finally(() => reset());
     }
     return (
-        <Modal title="Nova categoria" closeModalRef={closeModalRef} trigger={<NewCategoryButton>NovaCategoria</NewCategoryButton>}>
+        <Modal title="Nova categoria" closeModalRef={closeModalRef} trigger={<NewCategoryButton>Nova Categoria</NewCategoryButton>}>
             <Form onSubmit={handleSubmit(handleCreateCategory)}>
-                <FormInput {...register("description")} placeholder="Descrição" required />
-                {errors.description && (<FormError>{errors.description.message}</FormError>)}
+                <FormInput {...register("descricao")} placeholder="Descrição" required />
+                {errors.descricao && (<FormError>{errors.descricao.message}</FormError>)}
                 {hasError && <FormError>{errorMessage}</FormError>}
                 <FormButton type="submit">{isLoading ? "Carregando..." : "Cadastrar"}</FormButton>
             </Form>

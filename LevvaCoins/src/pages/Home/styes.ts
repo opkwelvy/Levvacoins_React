@@ -8,7 +8,7 @@ export const TransactionsContainer = styled.main`
     width: 100%;
     max-width: 1120px;
     margin: 1.5rem auto 0;
-    @media only screen and (max-wdith 1440px){
+    @media only screen and (max-width: 1440px){
         max-width: 1024px;
     }
 `;
