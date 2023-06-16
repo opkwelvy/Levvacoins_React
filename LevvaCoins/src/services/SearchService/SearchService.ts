@@ -2,20 +2,31 @@ import Api from "../../clients/api/Api";
 import { AxiosError } from "axios";
 import { RequestError } from "../../domains/request";
 import { SearchParams } from "../../domains/search";
-const searchForm = async ({ pesquisa }: SearchParams): Promise<void> => {
-  return Api.get({
-    url: `/Transaction`,
-    body: {
-      pesquisa,
-    },
-  })
-    .then(response => {
-      return response.data;
+import { TransactionValues } from "../../domains/transaction";
+const searchFormService = async ({ pesquisa }: SearchParams): Promise<TransactionValues[]> => {
+  if(pesquisa == ""){
+    return Api.get({
+      url: "/Transacao/list",
     })
-    .catch((err: AxiosError<RequestError>) => {
-      throw err.response?.data;
-    });
+      .then(response => {
+        return response.data;
+      })
+      .catch((err: AxiosError<RequestError>) => {
+        throw err.response?.data;
+      });
+  }else{
+    return Api.get({
+      url: `/Transacao/${pesquisa}`,
+    })
+      .then(response => {
+        return response.data;
+      })
+      .catch((err: AxiosError<RequestError>) => {
+        throw err.response?.data;
+      });
+  }
+
 };
 export const SearchService = {
-  searchForm,
+  searchFormService,
 }

@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import Api from "../../clients/api/Api";
 import { RequestError } from "../../domains/request";
 import { NewTransactionParams, TransactionValues } from "../../domains/transaction";
+import { SearchParams } from "../../domains/search";
 const createTransaction = async ({
     descricao,
     valor,
