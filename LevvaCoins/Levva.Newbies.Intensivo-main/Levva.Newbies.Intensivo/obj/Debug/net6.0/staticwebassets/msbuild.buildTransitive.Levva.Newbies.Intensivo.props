@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Levva.Newbies.Intensivo.props" />
+</Project>
